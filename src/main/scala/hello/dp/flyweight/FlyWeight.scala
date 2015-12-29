@@ -15,6 +15,6 @@ trait FlyWeightFactory[T1, T2] extends Function[T1, T2] {
     }
   }
   
-//  def update(index: T1, elem: T2) { pool(index) = elem }
+  def update(index: T1, elem: T2) = { pool updated (index, elem) }
   
 }

@@ -4,7 +4,7 @@ trait Subject[T] {
   self: T =>
   private var observers: List[T => Unit] = Nil
   def subscribe(obs: T => Unit) = observers = obs :: observers
-  //  def unsubscribe(obs: T => Unit) = observers = observers - obs
+  def unsubscribe(obs: T => Unit) = observers = observers diff List(obs)
   protected def publish = for (obs <- observers) obs(this)
 }
 
@@ -15,7 +15,7 @@ class Sensor(val label: String) {
   }
 }
 
-// Pattern s p e c i f i c code
+// Pattern specific code
 trait SensorSubject extends Sensor with Subject[Sensor] {
   override def changeValue(v: Double) = {
     super.changeValue(v)

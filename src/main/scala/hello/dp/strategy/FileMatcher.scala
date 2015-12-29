@@ -1,7 +1,7 @@
 package hello.dp.strategy
 
 object FileMatcher {
-  private val filesHere = (new java.io.File(" . ")).listFiles
+  private val filesHere = (new java.io.File(".")).listFiles
 
   // matcher is a strategy
   private def filesMatching(matcher: String => Boolean) =
@@ -21,6 +21,7 @@ object FileMatcher {
   // Strategies
   private def matchRegex(query: String) =
     { s: String => s.matches(query) }
+  
   private class FilesEnding(query: String) {
     def matchEnding(s: String) = s.endsWith(query)
   }
